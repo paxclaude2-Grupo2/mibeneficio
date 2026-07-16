@@ -88,11 +88,11 @@ export default function AdminPage() {
             <CardContent>
               <div className="flex h-52 items-end justify-between gap-3">
                 {activacionPorMes.map((m) => (
-                  <div key={m.mes} className="flex flex-1 flex-col items-center gap-2">
+                  <div key={m.mes} className="flex h-full flex-1 flex-col items-center justify-end gap-2">
                     <span className="text-xs font-medium text-foreground">{m.activaciones}</span>
                     <div
                       className="w-full rounded-t-lg bg-primary transition-all"
-                      style={{ height: `${(m.activaciones / maxActivaciones) * 100}%` }}
+                      style={{ height: `${Math.max((m.activaciones / maxActivaciones) * 170, 8)}px` }}
                     />
                     <span className="text-xs text-muted-foreground">{m.mes}</span>
                   </div>
