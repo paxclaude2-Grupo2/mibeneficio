@@ -16,13 +16,25 @@ export default function TerminosPage() {
   const [terminos, setTerminos] = useState(false)
   const [privacidad, setPrivacidad] = useState(false)
   const [enviando, setEnviando] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
   const puedeContinuar = terminos && privacidad
 
-  function activar() {
+  async function activar() {
     if (!puedeContinuar) return
     setEnviando(true)
-    setTimeout(() => router.push('/confirmacion'), 700)
+    setError(null)
+    try {
+      const res = await fetch('/api/activar-beneficio', { method: 'POST' })
+      const data = await res.json()
+      if (!res.ok || !data.ok) {
+        throw new Error(data.error ?? 'No se pudo enviar el correo.')
+      }
+      router.push('/confirmacion')
+    } catch (e) {
+      setError(e instanceof Error ? e.message : 'Ocurrió un error inesperado.')
+      setEnviando(false)
+    }
   }
 
   return (
@@ -144,6 +156,9 @@ export default function TerminosPage() {
             <p className="text-center text-xs text-muted-foreground">
               Debes aceptar ambos documentos para continuar.
             </p>
+          )}
+          {error && (
+            <p className="text-center text-sm font-medium text-destructive">{error}</p>
           )}
         </div>
       </main>

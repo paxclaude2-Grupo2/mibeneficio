@@ -1,12 +1,12 @@
 // Datos mock realistas para el MVP "Mi Beneficio"
 
 export const colaborador = {
-  nombre: 'Valentina Ríos',
-  primerNombre: 'Valentina',
-  iniciales: 'VR',
+  nombre: 'Marlon Pariona',
+  primerNombre: 'Marlon',
+  iniciales: 'MP',
   puesto: 'Analista de Operaciones',
   empresa: 'Grupo Andes',
-  email: 'valentina.rios@grupoandes.com',
+  email: 'Marlon.pariona@gmail.com',
   ingreso: '3 de marzo, 2025',
 }
 
