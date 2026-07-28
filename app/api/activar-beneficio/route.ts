@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import nodemailer from 'nodemailer'
 import { colaborador, seguro } from '@/lib/data'
+import { buildActivationEmailHtml } from '@/lib/email-template'
 
 // Ruta de servidor que envía el correo de confirmación por Gmail SMTP.
 // Las credenciales viven en variables de entorno (.env.local), nunca en el código.
@@ -40,19 +41,13 @@ Costo para ti: ${seguro.costoColaborador}
 A partir de ahora, cuentas con el respaldo de tu empresa.
 
 — Mi Beneficio`,
-      html: `
-        <div style="font-family: Arial, sans-serif; color: #1f2937; line-height: 1.6;">
-          <h1 style="font-size: 22px; margin-bottom: 8px;">¡Hola ${colaborador.primerNombre}! Tu beneficio está activo</h1>
-          <p>Tu <strong>${seguro.nombre}</strong> quedó activado y con cobertura vigente hasta el <strong>${seguro.vigenciaHasta}</strong>.</p>
-          <table style="border-collapse: collapse; margin: 16px 0;">
-            <tr><td style="padding: 4px 12px 4px 0; color:#6b7280;">Póliza</td><td style="padding: 4px 0;"><strong>${seguro.poliza}</strong></td></tr>
-            <tr><td style="padding: 4px 12px 4px 0; color:#6b7280;">Aseguradora</td><td style="padding: 4px 0;">${seguro.aseguradora}</td></tr>
-            <tr><td style="padding: 4px 12px 4px 0; color:#6b7280;">Costo para ti</td><td style="padding: 4px 0;">${seguro.costoColaborador}</td></tr>
-          </table>
-          <p>A partir de ahora, cuentas con el respaldo de tu empresa.</p>
-          <p style="color:#6b7280; margin-top: 24px;">— Mi Beneficio</p>
-        </div>
-      `,
+      html: buildActivationEmailHtml({
+        nombre: colaborador.primerNombre,
+        poliza: seguro.poliza,
+        aseguradora: seguro.aseguradora,
+        vigenciaHasta: seguro.vigenciaHasta,
+        costo: seguro.costoColaborador,
+      }),
     })
 
     return NextResponse.json({ ok: true })
