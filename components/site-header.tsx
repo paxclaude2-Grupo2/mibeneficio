@@ -46,14 +46,6 @@ export function SiteHeader() {
 
         <div className="flex items-center gap-2">
           <Button
-            size="sm"
-            nativeButton={false}
-            className="hidden bg-coral text-coral-foreground hover:bg-coral/90 sm:inline-flex"
-            render={<Link href="/" />}
-          >
-            Activar beneficio
-          </Button>
-          <Button
             variant="ghost"
             size="icon"
             className="md:hidden"

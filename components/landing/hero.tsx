@@ -32,17 +32,8 @@ export function Hero() {
               className="h-11 bg-coral px-6 text-base text-coral-foreground hover:bg-coral/90"
               render={<Link href="/terminos" />}
             >
-              Activar mi beneficio
+              Activar beneficio
               <ArrowRight data-icon="inline-end" className="size-4" />
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              nativeButton={false}
-              className="h-11 px-6 text-base"
-              render={<Link href="#como-funciona" />}
-            >
-              Ver cómo funciona
             </Button>
           </div>
 

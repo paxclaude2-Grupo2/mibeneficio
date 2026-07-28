@@ -1,6 +1,4 @@
-import { ArrowRight, FileCheck, MousePointerClick, PartyPopper } from 'lucide-react'
-import Link from 'next/link'
-import { Button } from '@/components/ui/button'
+import { FileCheck, MousePointerClick, PartyPopper } from 'lucide-react'
 
 const pasos = [
   {
@@ -36,14 +34,6 @@ export function HowItWorks() {
               Diseñamos este módulo para que actives tu beneficio sin llamadas, sin formularios
               interminables y sin tecnicismos de seguros.
             </p>
-            <Button
-              nativeButton={false}
-              className="mt-2 w-fit bg-coral text-coral-foreground hover:bg-coral/90"
-              render={<Link href="/terminos" />}
-            >
-              Empezar ahora
-              <ArrowRight data-icon="inline-end" className="size-4" />
-            </Button>
           </div>
 
           <ol className="flex flex-col gap-4">
