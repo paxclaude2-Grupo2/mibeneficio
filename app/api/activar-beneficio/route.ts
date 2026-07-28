@@ -1,11 +1,13 @@
 import { NextResponse } from 'next/server'
 import nodemailer from 'nodemailer'
-import { colaborador, seguro } from '@/lib/data'
+import { seguro } from '@/lib/data'
 import { buildActivationEmailHtml } from '@/lib/email-template'
+
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
 // Ruta de servidor que envía el correo de confirmación por Gmail SMTP.
 // Las credenciales viven en variables de entorno (.env.local), nunca en el código.
-export async function POST() {
+export async function POST(request: Request) {
   const user = process.env.GMAIL_USER
   const pass = process.env.GMAIL_APP_PASSWORD
 
@@ -20,6 +22,19 @@ export async function POST() {
     )
   }
 
+  const body = await request.json().catch(() => null)
+  const nombreCompleto = typeof body?.nombre === 'string' ? body.nombre.trim() : ''
+  const email = typeof body?.email === 'string' ? body.email.trim() : ''
+
+  if (!nombreCompleto || !EMAIL_REGEX.test(email)) {
+    return NextResponse.json(
+      { ok: false, error: 'Nombre y correo electrónico son obligatorios.' },
+      { status: 400 },
+    )
+  }
+
+  const primerNombre = nombreCompleto.split(' ')[0]
+
   try {
     const transporter = nodemailer.createTransport({
       service: 'gmail',
@@ -28,9 +43,9 @@ export async function POST() {
 
     await transporter.sendMail({
       from: `"Mi Beneficio" <${user}>`,
-      to: 'Marlon.pariona@gmail.com',
+      to: email,
       subject: `Tu ${seguro.nombre} quedó activado`,
-      text: `¡Hola ${colaborador.primerNombre}!
+      text: `¡Hola ${primerNombre}!
 
 Tu ${seguro.nombre} quedó activado y con cobertura vigente hasta el ${seguro.vigenciaHasta}.
 
@@ -42,7 +57,7 @@ A partir de ahora, cuentas con el respaldo de tu empresa.
 
 — Mi Beneficio`,
       html: buildActivationEmailHtml({
-        nombre: colaborador.primerNombre,
+        nombre: primerNombre,
         poliza: seguro.poliza,
         aseguradora: seguro.aseguradora,
         vigenciaHasta: seguro.vigenciaHasta,

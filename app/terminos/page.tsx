@@ -1,6 +1,6 @@
 'use client'
 
-import { ArrowLeft, ArrowRight, FileText, Lock } from 'lucide-react'
+import { ArrowLeft, ArrowRight, FileText, Lock, UserCircle } from 'lucide-react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
@@ -9,28 +9,39 @@ import { Logo } from '@/components/logo'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Checkbox } from '@/components/ui/checkbox'
+import { Input } from '@/components/ui/input'
 import { seguro } from '@/lib/data'
+
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
 export default function TerminosPage() {
   const router = useRouter()
+  const [nombre, setNombre] = useState('')
+  const [email, setEmail] = useState('')
   const [terminos, setTerminos] = useState(false)
   const [privacidad, setPrivacidad] = useState(false)
   const [enviando, setEnviando] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
-  const puedeContinuar = terminos && privacidad
+  const datosValidos = nombre.trim().length > 1 && EMAIL_REGEX.test(email.trim())
+  const puedeContinuar = datosValidos && terminos && privacidad
 
   async function activar() {
     if (!puedeContinuar) return
     setEnviando(true)
     setError(null)
     try {
-      const res = await fetch('/api/activar-beneficio', { method: 'POST' })
+      const res = await fetch('/api/activar-beneficio', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ nombre: nombre.trim(), email: email.trim() }),
+      })
       const data = await res.json()
       if (!res.ok || !data.ok) {
         throw new Error(data.error ?? 'No se pudo enviar el correo.')
       }
-      router.push('/confirmacion')
+      const params = new URLSearchParams({ nombre: nombre.trim(), email: email.trim() })
+      router.push(`/confirmacion?${params.toString()}`)
     } catch (e) {
       setError(e instanceof Error ? e.message : 'Ocurrió un error inesperado.')
       setEnviando(false)
@@ -65,6 +76,51 @@ export default function TerminosPage() {
         </div>
 
         <div className="flex flex-col gap-5">
+          <Card>
+            <CardHeader>
+              <span className="mb-1 flex size-10 items-center justify-center rounded-xl bg-accent text-primary">
+                <UserCircle className="size-5" />
+              </span>
+              <CardTitle>¿Quién está activando el beneficio?</CardTitle>
+            </CardHeader>
+            <CardContent className="flex flex-col gap-4">
+              <p className="text-sm leading-relaxed text-muted-foreground">
+                Usamos estos datos para identificarte como el beneficiario y enviarte la
+                confirmación por correo.
+              </p>
+              <div className="flex flex-col gap-3 sm:flex-row">
+                <div className="flex flex-1 flex-col gap-1.5">
+                  <label htmlFor="nombre" className="text-sm font-medium text-foreground">
+                    Nombre completo
+                  </label>
+                  <Input
+                    id="nombre"
+                    type="text"
+                    autoComplete="name"
+                    placeholder="Ej. Marlon Pariona"
+                    value={nombre}
+                    onChange={(e) => setNombre(e.target.value)}
+                    className="h-11"
+                  />
+                </div>
+                <div className="flex flex-1 flex-col gap-1.5">
+                  <label htmlFor="email" className="text-sm font-medium text-foreground">
+                    Correo electrónico
+                  </label>
+                  <Input
+                    id="email"
+                    type="email"
+                    autoComplete="email"
+                    placeholder="tú@empresa.com"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    className="h-11"
+                  />
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
           <Card>
             <CardHeader>
               <span className="mb-1 flex size-10 items-center justify-center rounded-xl bg-accent text-primary">
@@ -154,7 +210,9 @@ export default function TerminosPage() {
           </div>
           {!puedeContinuar && (
             <p className="text-center text-xs text-muted-foreground">
-              Debes aceptar ambos documentos para continuar.
+              {!datosValidos
+                ? 'Completa tu nombre y un correo electrónico válido para continuar.'
+                : 'Debes aceptar ambos documentos para continuar.'}
             </p>
           )}
           {error && (

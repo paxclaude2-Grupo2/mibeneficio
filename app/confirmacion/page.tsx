@@ -6,25 +6,33 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { colaborador, seguro } from '@/lib/data'
 
-const siguientes = [
-  {
-    icon: Mail,
-    titulo: 'Revisa tu correo',
-    descripcion: `Enviamos la confirmación a ${colaborador.email} con el resumen de tu cobertura.`,
-  },
-  {
-    icon: CalendarCheck,
-    titulo: 'Agenda tu chequeo preventivo',
-    descripcion: 'Tu chequeo anual está incluido. Es el mejor primer paso para aprovecharlo.',
-  },
-  {
-    icon: LifeBuoy,
-    titulo: 'Explora el Centro de recursos',
-    descripcion: 'Encuentra FAQs, documentos y contactos de soporte cuando los necesites.',
-  },
-]
+export default async function ConfirmacionPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ nombre?: string; email?: string }>
+}) {
+  const params = await searchParams
+  const nombre = params.nombre?.trim().split(' ')[0] || colaborador.primerNombre
+  const email = params.email?.trim() || colaborador.email
 
-export default function ConfirmacionPage() {
+  const siguientes = [
+    {
+      icon: Mail,
+      titulo: 'Revisa tu correo',
+      descripcion: `Enviamos la confirmación a ${email} con el resumen de tu cobertura.`,
+    },
+    {
+      icon: CalendarCheck,
+      titulo: 'Agenda tu chequeo preventivo',
+      descripcion: 'Tu chequeo anual está incluido. Es el mejor primer paso para aprovecharlo.',
+    },
+    {
+      icon: LifeBuoy,
+      titulo: 'Explora el Centro de recursos',
+      descripcion: 'Encuentra FAQs, documentos y contactos de soporte cuando los necesites.',
+    },
+  ]
+
   return (
     <div className="flex min-h-dvh flex-col bg-secondary/30">
       <header className="border-b border-border bg-background">
@@ -43,7 +51,7 @@ export default function ConfirmacionPage() {
             <CheckCircle2 className="size-9" />
           </span>
           <h1 className="font-display text-3xl font-bold tracking-tight text-foreground text-balance sm:text-4xl">
-            ¡Listo, {colaborador.primerNombre}! Tu beneficio está activo
+            ¡Listo, {nombre}! Tu beneficio está activo
           </h1>
           <p className="max-w-xl text-lg leading-relaxed text-muted-foreground text-pretty">
             Tu {seguro.nombre} quedó activado y con cobertura vigente hasta el{' '}
