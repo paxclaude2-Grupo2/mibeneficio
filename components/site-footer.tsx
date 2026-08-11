@@ -8,13 +8,16 @@ export function SiteFooter() {
         <div className="flex flex-col gap-3">
           <Logo />
           <p className="max-w-sm text-sm leading-relaxed text-muted-foreground">
-            Un beneficio de tu empresa para acompañarte a ti y a tu familia. Aquí lo entiendes,
-            lo activas y lo aprovechas.
+            Vita+ es el seguro de vida que tu empresa te ofrece. Aquí lo entiendes, lo activas y
+            proteges a quienes más quieres.
           </p>
         </div>
         <div className="flex flex-wrap gap-x-8 gap-y-2 text-sm">
           <Link href="/dashboard" className="text-muted-foreground hover:text-foreground">
             Mi dashboard
+          </Link>
+          <Link href="/beneficiarios" className="text-muted-foreground hover:text-foreground">
+            Beneficiarios
           </Link>
           <Link href="/recursos" className="text-muted-foreground hover:text-foreground">
             Centro de recursos
@@ -29,7 +32,8 @@ export function SiteFooter() {
       </div>
       <div className="border-t border-border">
         <div className="mx-auto w-full max-w-6xl px-4 py-4 text-xs text-muted-foreground sm:px-6">
-          © 2025 Grupo Andes · Mi Beneficio. Este es un módulo demostrativo con datos ficticios.
+          © 2025 Vita+ · Beneficio proporcionado por Grupo Andes. Módulo demostrativo con datos
+          ficticios.
         </div>
       </div>
     </footer>

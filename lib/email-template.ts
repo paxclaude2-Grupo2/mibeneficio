@@ -5,11 +5,11 @@
 export function buildActivationEmailHtml(params: {
   nombre: string
   poliza: string
-  aseguradora: string
+  empresa: string
   vigenciaHasta: string
   costo: string
 }) {
-  const { nombre, poliza, aseguradora, vigenciaHasta, costo } = params
+  const { nombre, poliza, empresa, vigenciaHasta, costo } = params
 
   const colors = {
     background: '#f8fafd',
@@ -30,7 +30,7 @@ export function buildActivationEmailHtml(params: {
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Tu beneficio está activo</title>
+    <title>Tu seguro está activo</title>
   </head>
   <body style="margin:0; padding:0; background-color:${colors.background}; font-family:'Segoe UI', Arial, sans-serif;">
     <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background-color:${colors.background}; padding:32px 16px;">
@@ -44,10 +44,10 @@ export function buildActivationEmailHtml(params: {
                 <table role="presentation" cellpadding="0" cellspacing="0">
                   <tr>
                     <td style="width:34px; height:34px; background-color:${colors.coral}; border-radius:10px; text-align:center; vertical-align:middle;">
-                      <span style="color:${colors.primaryForeground}; font-size:18px; font-weight:700; line-height:34px;">M</span>
+                      <span style="color:${colors.primaryForeground}; font-size:18px; font-weight:700; line-height:34px;">V</span>
                     </td>
                     <td style="padding-left:10px; color:${colors.primaryForeground}; font-size:16px; font-weight:700;">
-                      Mi Beneficio
+                      Vita+
                     </td>
                   </tr>
                 </table>
@@ -65,10 +65,10 @@ export function buildActivationEmailHtml(params: {
                   </tr>
                 </table>
                 <h1 style="margin:0 0 12px; color:${colors.primary}; font-size:24px; font-weight:800; letter-spacing:-0.02em;">
-                  ¡Hola ${nombre}!<br />Tu beneficio está activo
+                  ¡Hola ${nombre}!<br />Tu tranquilidad ya empezó
                 </h1>
                 <p style="margin:0; color:${colors.muted}; font-size:15px; line-height:1.6;">
-                  Tu <strong style="color:${colors.foreground};">Seguro de Vida y Salud</strong> quedó activado y con cobertura vigente hasta el <strong style="color:${colors.foreground};">${vigenciaHasta}</strong>.
+                  Tu <strong style="color:${colors.foreground};">Vita+</strong> quedó activado y con cobertura vigente hasta el <strong style="color:${colors.foreground};">${vigenciaHasta}</strong>.
                 </p>
               </td>
             </tr>
@@ -85,8 +85,8 @@ export function buildActivationEmailHtml(params: {
                           <td align="right" style="padding:6px 0; color:${colors.primary}; font-size:14px; font-weight:700;">${poliza}</td>
                         </tr>
                         <tr>
-                          <td style="padding:6px 0; color:${colors.muted}; font-size:13px; border-top:1px solid ${colors.border};">Aseguradora</td>
-                          <td align="right" style="padding:6px 0; color:${colors.foreground}; font-size:14px; border-top:1px solid ${colors.border};">${aseguradora}</td>
+                          <td style="padding:6px 0; color:${colors.muted}; font-size:13px; border-top:1px solid ${colors.border};">Empresa</td>
+                          <td align="right" style="padding:6px 0; color:${colors.foreground}; font-size:14px; border-top:1px solid ${colors.border};">${empresa}</td>
                         </tr>
                         <tr>
                           <td style="padding:6px 0; color:${colors.muted}; font-size:13px; border-top:1px solid ${colors.border};">Costo para ti</td>
@@ -107,7 +107,8 @@ export function buildActivationEmailHtml(params: {
             <tr>
               <td style="padding:24px 32px 32px; text-align:center;">
                 <p style="margin:0; color:${colors.muted}; font-size:14px; line-height:1.6;">
-                  A partir de ahora, cuentas con el respaldo de tu empresa. Ya puedes agendar tu chequeo preventivo y usar la telemedicina 24/7 cuando lo necesites.
+                  Protege económicamente a quienes más quieres: te falta un paso importante,
+                  registrar a tus beneficiarios. Toma menos de 2 minutos desde tu dashboard.
                 </p>
               </td>
             </tr>
@@ -115,7 +116,7 @@ export function buildActivationEmailHtml(params: {
             <!-- Footer -->
             <tr>
               <td style="padding:20px 32px; background-color:${colors.background}; border-top:1px solid ${colors.border}; text-align:center;">
-                <p style="margin:0; color:${colors.muted}; font-size:12px;">— Mi Beneficio · Un beneficio de tu empresa para ti</p>
+                <p style="margin:0; color:${colors.muted}; font-size:12px;">— Vita+ · Beneficio proporcionado por ${empresa}</p>
               </td>
             </tr>
 

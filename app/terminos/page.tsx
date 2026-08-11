@@ -10,7 +10,7 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Checkbox } from '@/components/ui/checkbox'
 import { Input } from '@/components/ui/input'
-import { seguro } from '@/lib/data'
+import { producto } from '@/lib/data'
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
@@ -70,7 +70,7 @@ export default function TerminosPage() {
             Un último paso antes de activar
           </h1>
           <p className="text-muted-foreground text-pretty">
-            Para habilitar tu {seguro.nombre} necesitamos tu consentimiento. Léelo con calma,
+            Para habilitar tu {producto.nombre} necesitamos tu consentimiento. Léelo con calma,
             está en lenguaje claro.
           </p>
         </div>
@@ -130,14 +130,14 @@ export default function TerminosPage() {
             </CardHeader>
             <CardContent className="flex flex-col gap-3 text-sm leading-relaxed text-muted-foreground">
               <p>
-                El {seguro.nombre} es otorgado por tu empresa a través de {seguro.aseguradora}{' '}
-                (póliza {seguro.poliza}) sin costo para ti. La cobertura estará vigente mientras
-                mantengas tu relación laboral y hasta el {seguro.vigenciaHasta}.
+                {producto.nombre} es el seguro de vida que tu empresa te ofrece (póliza{' '}
+                {producto.poliza}) sin costo para ti. La cobertura estará vigente mientras
+                mantengas tu relación laboral y hasta el {producto.vigenciaHasta}.
               </p>
               <p>
-                El uso de los servicios está sujeto a las condiciones generales de la póliza.
-                Algunos servicios pueden requerir agendamiento previo o tener límites anuales,
-                detallados en el Centro de recursos.
+                Tu protección incluye fallecimiento, muerte accidental e invalidez total y
+                permanente. Las condiciones generales de la póliza detallan los montos y
+                situaciones en las que aplica, disponibles en el Centro de recursos.
               </p>
               <p>
                 Activar el beneficio no genera ningún cargo ni compromiso económico. Puedes

@@ -1,4 +1,4 @@
-import { Download, FileText, Mail, Phone, Video, type LucideIcon } from 'lucide-react'
+import { Download, FileText, LifeBuoy, Mail, Phone, type LucideIcon } from 'lucide-react'
 import { EmailPreview } from '@/components/recursos/email-preview'
 import { FaqSearch } from '@/components/recursos/faq-search'
 import { SiteFooter } from '@/components/site-footer'
@@ -10,7 +10,7 @@ import { contactos, documentos } from '@/lib/data'
 const contactoIcon: Record<string, LucideIcon> = {
   Phone,
   Mail,
-  Video,
+  LifeBuoy,
 }
 
 export default function RecursosPage() {

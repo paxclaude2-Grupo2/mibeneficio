@@ -9,7 +9,7 @@ export function Logo({ className }: { className?: string }) {
         <ShieldCheck className="size-5" />
       </span>
       <span className="font-display text-lg font-bold tracking-tight text-foreground">
-        Mi Beneficio
+        Vita+
       </span>
     </Link>
   )

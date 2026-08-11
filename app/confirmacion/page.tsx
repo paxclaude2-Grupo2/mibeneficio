@@ -1,10 +1,10 @@
-import { ArrowRight, CalendarCheck, CheckCircle2, LifeBuoy, Mail } from 'lucide-react'
+import { ArrowRight, CheckCircle2, LifeBuoy, Mail, Users } from 'lucide-react'
 import Link from 'next/link'
 import { FlowSteps } from '@/components/flow-steps'
 import { Logo } from '@/components/logo'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
-import { colaborador, seguro } from '@/lib/data'
+import { colaborador, producto } from '@/lib/data'
 
 export default async function ConfirmacionPage({
   searchParams,
@@ -19,12 +19,12 @@ export default async function ConfirmacionPage({
     {
       icon: Mail,
       titulo: 'Revisa tu correo',
-      descripcion: `Enviamos la confirmación a ${email} con el resumen de tu cobertura.`,
+      descripcion: `Enviamos la confirmación a ${email} con el resumen de tu protección.`,
     },
     {
-      icon: CalendarCheck,
-      titulo: 'Agenda tu chequeo preventivo',
-      descripcion: 'Tu chequeo anual está incluido. Es el mejor primer paso para aprovecharlo.',
+      icon: Users,
+      titulo: 'Registra a tus beneficiarios',
+      descripcion: 'Define quién recibirá la protección de tu seguro. Toma menos de 2 minutos.',
     },
     {
       icon: LifeBuoy,
@@ -51,11 +51,11 @@ export default async function ConfirmacionPage({
             <CheckCircle2 className="size-9" />
           </span>
           <h1 className="font-display text-3xl font-bold tracking-tight text-foreground text-balance sm:text-4xl">
-            ¡Listo, {nombre}! Tu beneficio está activo
+            ¡Listo, {nombre}! Tu protección está activa
           </h1>
           <p className="max-w-xl text-lg leading-relaxed text-muted-foreground text-pretty">
-            Tu {seguro.nombre} quedó activado y con cobertura vigente hasta el{' '}
-            {seguro.vigenciaHasta}. A partir de ahora, cuentas con el respaldo de tu empresa.
+            Tu {producto.nombre} quedó activado y con cobertura vigente hasta el{' '}
+            {producto.vigenciaHasta}. A partir de ahora, cuentas con el respaldo de tu empresa.
           </p>
         </div>
 
@@ -66,10 +66,10 @@ export default async function ConfirmacionPage({
                 Póliza activada
               </span>
               <span className="font-display text-lg font-semibold text-foreground">
-                {seguro.poliza}
+                {producto.poliza}
               </span>
               <span className="text-sm text-muted-foreground">
-                {seguro.aseguradora} · {seguro.costoColaborador}
+                {colaborador.empresa} · {producto.costoColaborador}
               </span>
             </div>
             <div className="flex flex-col gap-1 sm:text-right">
@@ -77,7 +77,7 @@ export default async function ConfirmacionPage({
                 Vigente hasta
               </span>
               <span className="font-display text-lg font-semibold text-foreground">
-                {seguro.vigenciaHasta}
+                {producto.vigenciaHasta}
               </span>
             </div>
           </CardContent>
@@ -111,9 +111,9 @@ export default async function ConfirmacionPage({
             size="lg"
             nativeButton={false}
             className="h-11 px-6"
-            render={<Link href="/recursos" />}
+            render={<Link href="/beneficiarios" />}
           >
-            Ir al Centro de recursos
+            Registrar beneficiarios
           </Button>
           <Button
             size="lg"

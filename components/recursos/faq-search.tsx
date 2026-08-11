@@ -28,7 +28,7 @@ export function FaqSearch() {
         <Search className="pointer-events-none absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground" />
         <Input
           type="search"
-          placeholder="Busca una duda: chequeo, familia, costo…"
+          placeholder="Busca una duda: beneficiarios, cobertura, monto…"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           className="h-11 pl-9"

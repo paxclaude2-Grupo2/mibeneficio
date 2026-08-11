@@ -16,9 +16,9 @@ const manrope = Manrope({
 })
 
 export const metadata: Metadata = {
-  title: 'Mi Beneficio — Tu seguro, respaldado por tu empresa',
+  title: 'Vita+ — Tu tranquilidad empieza hoy',
   description:
-    'Descubre, activa y da seguimiento al seguro que tu empresa te ofrece como beneficio. Claro, cercano y sin letra chica.',
+    'Seguro de vida simple y digital para proteger a tus colaboradores y sus familias. Conócelo, actívalo y registra a tus beneficiarios.',
   generator: 'v0.app',
 }
 

@@ -1,4 +1,4 @@
-// Datos mock realistas para el MVP "Mi Beneficio"
+// Datos mock realistas para el MVP "Vita+" (seguro de vida B2B)
 
 export const colaborador = {
   nombre: 'Marlon Pariona',
@@ -10,106 +10,150 @@ export const colaborador = {
   ingreso: '3 de marzo, 2025',
 }
 
-export const seguro = {
-  nombre: 'Seguro de Vida y Salud',
-  aseguradora: 'Aliada Seguros',
-  poliza: 'GA-2025-48213',
-  proposito:
-    'Un respaldo que tu empresa contrató para ti: te acompaña ante imprevistos de salud, accidentes y a tu familia cuando más lo necesitan.',
+// Vita+ es el producto (no un tercero): la empresa es cliente, no dueña de la marca.
+export const producto = {
+  nombre: 'Vita+',
+  poliza: 'VT-2025-48213',
   vigenciaHasta: '31 de diciembre, 2025',
   costoColaborador: 'Sin costo para ti',
+  empresaCliente: colaborador.empresa,
+  montoFallecimiento: 50000,
+  montoMuerteAccidental: 100000,
+  montoInvalidez: 50000,
 }
 
-export const coberturas = [
+export const proteccionDetalle = [
   {
-    titulo: 'Salud y hospitalización',
-    descripcion: 'Atención médica, urgencias y hospitalización con red de clínicas afiliadas.',
-    icono: 'HeartPulse',
-  },
-  {
-    titulo: 'Accidentes personales',
-    descripcion: 'Cobertura ante accidentes dentro y fuera del trabajo, las 24 horas.',
+    titulo: 'Fallecimiento',
+    monto: producto.montoFallecimiento,
+    descripcion: 'Protección económica para tu familia.',
     icono: 'ShieldCheck',
   },
   {
-    titulo: 'Protección familiar',
-    descripcion: 'Apoyo económico para tu familia como beneficiarios designados.',
+    titulo: 'Muerte accidental',
+    monto: producto.montoMuerteAccidental,
+    descripcion: 'Monto adicional si ocurre por accidente.',
+    icono: 'HeartHandshake',
+  },
+  {
+    titulo: 'Invalidez total y permanente',
+    monto: producto.montoInvalidez,
+    descripcion: 'Cobertura adicional si la necesitas.',
+    icono: 'Accessibility',
+  },
+]
+
+export const coberturas = [
+  {
+    titulo: 'Protección por fallecimiento',
+    descripcion: 'Un monto asegurado para que tu familia esté cubierta económicamente.',
+    icono: 'ShieldCheck',
+  },
+  {
+    titulo: 'Muerte accidental',
+    descripcion: 'Protección adicional cuando el fallecimiento ocurre por un accidente.',
+    icono: 'HeartHandshake',
+  },
+  {
+    titulo: 'Beneficiarios',
+    descripcion: 'Tú decides quién recibe la protección de tu seguro y en qué proporción.',
     icono: 'Users',
   },
   {
-    titulo: 'Telemedicina 24/7',
-    descripcion: 'Consultas médicas por video o teléfono, sin costo y sin filas.',
-    icono: 'Video',
+    titulo: 'Invalidez total y permanente',
+    descripcion: 'Cobertura adicional si una condición te impide trabajar de forma permanente.',
+    icono: 'Accessibility',
+  },
+  {
+    titulo: 'Asistencia a tu familia',
+    descripcion: 'Orientación y acompañamiento para tus beneficiarios cuando lo necesiten.',
+    icono: 'LifeBuoy',
+  },
+  {
+    titulo: 'Cómo solicitar el beneficio',
+    descripcion: 'Un proceso claro para que tu familia sepa exactamente qué hacer.',
+    icono: 'FileCheck',
   },
 ]
 
-export const serviciosIncluidos = [
-  { titulo: 'Consulta médica presencial', detalle: 'Hasta 12 al año', activo: true },
-  { titulo: 'Telemedicina 24/7', detalle: 'Ilimitada', activo: true },
-  { titulo: 'Estudios de laboratorio', detalle: 'Cobertura 80%', activo: true },
-  { titulo: 'Hospitalización', detalle: 'Hasta $50,000', activo: true },
-  { titulo: 'Apoyo psicológico', detalle: '6 sesiones al año', activo: true },
-  { titulo: 'Chequeo preventivo anual', detalle: 'Incluido', activo: true },
-]
-
-export const proximosPasos = [
+export const accionesRecomendadas = [
   {
-    titulo: 'Agenda tu chequeo preventivo',
-    descripcion: 'Aprovecha tu chequeo anual sin costo. Es el mejor primer paso.',
-    accion: 'Agendar',
-    icono: 'CalendarCheck',
-  },
-  {
-    titulo: 'Descarga tu credencial digital',
-    descripcion: 'Tenla siempre a mano en tu teléfono para cualquier atención.',
-    accion: 'Descargar',
-    icono: 'IdCard',
-  },
-  {
+    id: 'beneficiarios',
     titulo: 'Designa a tus beneficiarios',
-    descripcion: 'Define quién recibirá la protección familiar. Toma 2 minutos.',
-    accion: 'Completar',
+    descripcion: 'Define quién recibirá la protección de tu seguro.',
+    accion: 'Agregar beneficiarios',
     icono: 'Users',
   },
-]
+  {
+    id: 'cobertura',
+    titulo: 'Revisa tu cobertura',
+    descripcion: 'Conoce exactamente qué cubre tu seguro y cuándo aplica.',
+    accion: 'Ver cobertura',
+    icono: 'ShieldCheck',
+  },
+  {
+    id: 'certificado',
+    titulo: 'Descarga tu certificado',
+    descripcion: 'Guarda una copia digital de tu protección.',
+    accion: 'Descargar',
+    icono: 'FileDown',
+  },
+  {
+    id: 'datos',
+    titulo: 'Actualiza tus datos',
+    descripcion: 'Mantén tu información y la de tus beneficiarios al día.',
+    accion: 'Actualizar',
+    icono: 'UserCog',
+  },
+] as const
 
 export const faqs = [
   {
-    pregunta: '¿Este seguro tiene algún costo para mí?',
+    pregunta: '¿Qué cubre mi seguro?',
     respuesta:
-      'No. Tu empresa cubre el 100% del costo del seguro como parte de tus beneficios. No se descuenta nada de tu salario.',
+      'Tu Vita+ te protege económicamente a ti y a tu familia ante un fallecimiento, con un monto adicional si ocurre por accidente. También puede incluir invalidez total y permanente como cobertura adicional.',
   },
   {
-    pregunta: '¿Desde cuándo puedo usarlo?',
+    pregunta: '¿Cuánto está asegurado?',
     respuesta:
-      'Desde el momento en que activas tu beneficio en esta plataforma. La cobertura queda vigente de inmediato y recibirás la confirmación por correo.',
+      'Tu póliza incluye $50,000 por fallecimiento, $100,000 por muerte accidental y $50,000 por invalidez total y permanente, sin costo para ti.',
   },
   {
-    pregunta: '¿Cómo agendo una consulta médica?',
+    pregunta: '¿Quién puede ser mi beneficiario?',
     respuesta:
-      'Puedes usar la telemedicina 24/7 desde tu dashboard, o agendar una consulta presencial con la red de clínicas afiliadas. Solo necesitas tu credencial digital.',
+      'Cualquier persona que tú elijas: pareja, hijos, padres u otro familiar. Puedes designar a más de uno y definir qué porcentaje recibe cada uno.',
   },
   {
-    pregunta: '¿Mi familia también está cubierta?',
+    pregunta: '¿Puedo cambiar mis beneficiarios?',
     respuesta:
-      'La protección familiar aplica para los beneficiarios que designes. Puedes agregarlos y actualizarlos desde la sección de próximos pasos en tu dashboard.',
+      'Sí, cuando quieras. Entra a la sección de Beneficiarios y actualiza la lista en cualquier momento.',
   },
   {
-    pregunta: '¿Qué pasa si dejo la empresa?',
+    pregunta: '¿Qué sucede si dejo la empresa?',
     respuesta:
-      'La cobertura está ligada a tu relación laboral. Si cambias de empleo, el área de Recursos Humanos te explicará las opciones de portabilidad disponibles.',
+      'La cobertura está ligada a tu relación laboral. Si cambias de empleo, Recursos Humanos te explicará las opciones disponibles.',
   },
   {
-    pregunta: '¿Dónde veo el detalle de mi póliza?',
+    pregunta: '¿Qué debe hacer mi familia para solicitar el beneficio?',
     respuesta:
-      'En el Centro de recursos encontrarás todos los documentos descargables, incluyendo las condiciones generales y el resumen de tu póliza.',
+      'Deben contactar a Recursos Humanos o a la línea de atención de Vita+ y presentar la documentación básica que se detalla en la Guía para beneficiarios.',
+  },
+  {
+    pregunta: '¿Cuándo no aplica la cobertura?',
+    respuesta:
+      'Las condiciones generales detallan las exclusiones específicas de tu póliza. Puedes revisarlas cuando quieras en el Centro de recursos.',
+  },
+  {
+    pregunta: '¿Dónde encuentro mi certificado?',
+    respuesta:
+      'Desde tu dashboard, en la sección "Acciones recomendadas", puedes descargar tu certificado en cualquier momento.',
   },
 ]
 
 export const contactos = [
   {
-    nombre: 'Línea de atención Aliada Seguros',
-    detalle: 'Disponible 24/7 para urgencias',
+    nombre: 'Línea de atención Vita+',
+    detalle: 'Disponible 24/7 para dudas sobre tu seguro',
     valor: '800 123 4567',
     tipo: 'telefono',
     icono: 'Phone',
@@ -122,30 +166,35 @@ export const contactos = [
     icono: 'Mail',
   },
   {
-    nombre: 'Telemedicina',
-    detalle: 'Consulta médica inmediata',
-    valor: 'Iniciar videollamada',
+    nombre: 'Asistencia para beneficiarios',
+    detalle: 'Orientación si necesitas solicitar el beneficio',
+    valor: 'Iniciar chat',
     tipo: 'accion',
-    icono: 'Video',
+    icono: 'LifeBuoy',
   },
 ]
 
 export const documentos = [
-  { nombre: 'Condiciones generales de la póliza', tipo: 'PDF', peso: '1.2 MB' },
-  { nombre: 'Resumen de coberturas 2025', tipo: 'PDF', peso: '480 KB' },
-  { nombre: 'Guía rápida: cómo usar tu seguro', tipo: 'PDF', peso: '640 KB' },
-  { nombre: 'Directorio de clínicas afiliadas', tipo: 'PDF', peso: '890 KB' },
-  { nombre: 'Formato de designación de beneficiarios', tipo: 'PDF', peso: '210 KB' },
+  { nombre: 'Resumen de cobertura', tipo: 'PDF', peso: '420 KB' },
+  { nombre: 'Certificado de seguro', tipo: 'PDF', peso: '310 KB' },
+  { nombre: 'Guía para beneficiarios', tipo: 'PDF', peso: '380 KB' },
+  { nombre: 'Condiciones generales', tipo: 'PDF', peso: '1.1 MB' },
+  { nombre: '¿Qué hacer para solicitar un beneficio?', tipo: 'PDF', peso: '290 KB' },
 ]
 
-// Métricas para la vista admin / analítica
+// Métricas para el dashboard de RR. HH. (/admin)
 export const metricasAdopcion = {
-  totalColaboradores: 1240,
-  activaron: 892,
-  tasaActivacion: 72,
-  tasaApertura: 64,
-  usaronAlMenosUna: 48,
-  retorno90dias: 38,
+  northStar: {
+    porcentaje: 62,
+    numerador: 744,
+    denominador: 1200,
+    label: 'Protección completa',
+  },
+  conocieron: 82,
+  activaron: 72,
+  registraronBeneficiarios: 65,
+  tasaAbandono: 8,
+  contactosSoporte: 4,
 }
 
 export const activacionPorMes = [
@@ -163,4 +212,22 @@ export const adopcionPorArea = [
   { area: 'Tecnología', porcentaje: 69 },
   { area: 'Administración', porcentaje: 61 },
   { area: 'Logística', porcentaje: 52 },
+]
+
+export const beneficiariosPorMes = [
+  { mes: 'Ene', beneficiarios: 40 },
+  { mes: 'Feb', beneficiarios: 65 },
+  { mes: 'Mar', beneficiarios: 98 },
+  { mes: 'Abr', beneficiarios: 130 },
+  { mes: 'May', beneficiarios: 158 },
+  { mes: 'Jun', beneficiarios: 190 },
+]
+
+export const evolucionProteccionCompleta = [
+  { mes: 'Ene', porcentaje: 38 },
+  { mes: 'Feb', porcentaje: 44 },
+  { mes: 'Mar', porcentaje: 50 },
+  { mes: 'Abr', porcentaje: 55 },
+  { mes: 'May', porcentaje: 59 },
+  { mes: 'Jun', porcentaje: 62 },
 ]

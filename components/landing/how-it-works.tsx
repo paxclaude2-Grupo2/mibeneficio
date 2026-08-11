@@ -1,20 +1,20 @@
-import { FileCheck, MousePointerClick, PartyPopper } from 'lucide-react'
+import { HeartHandshake, MousePointerClick, ShieldCheck } from 'lucide-react'
 
 const pasos = [
   {
     icon: MousePointerClick,
-    titulo: 'Conoce tu beneficio',
-    descripcion: 'Entiende en lenguaje claro qué cubre tu seguro y cómo puede ayudarte.',
+    titulo: 'Conoce tu protección',
+    descripcion: 'Entiende cuánto estás cubierto y en qué situaciones aplica tu seguro.',
   },
   {
-    icon: FileCheck,
-    titulo: 'Acepta y activa',
-    descripcion: 'Revisa los términos y el aviso de privacidad, y actívalo con un clic.',
+    icon: ShieldCheck,
+    titulo: 'Activa tu cobertura',
+    descripcion: 'Confirma tus datos y activa tu protección de forma sencilla.',
   },
   {
-    icon: PartyPopper,
-    titulo: 'Empieza a usarlo',
-    descripcion: 'Accede a tu dashboard, agenda tu chequeo y recibe avisos por correo.',
+    icon: HeartHandshake,
+    titulo: 'Protege a quienes más quieres',
+    descripcion: 'Registra o actualiza a tus beneficiarios.',
   },
 ]
 
