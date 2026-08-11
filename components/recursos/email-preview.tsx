@@ -11,9 +11,7 @@ export function EmailPreview() {
           <span className="text-sm font-medium text-foreground">
             Completa tu protección, {colaborador.primerNombre}
           </span>
-          <span className="text-xs text-muted-foreground">
-            {producto.nombre} · {colaborador.empresa}
-          </span>
+          <span className="text-xs text-muted-foreground">{producto.nombre}</span>
         </div>
         <Badge variant="secondary" className="shrink-0">
           Recordatorio
@@ -31,13 +29,13 @@ export function EmailPreview() {
         </p>
         <p className="text-sm leading-relaxed text-muted-foreground">
           Completa tu protección en menos de 2 minutos. Es el último paso para que{' '}
-          {colaborador.empresa} y {producto.nombre} te respalden por completo.
+          {producto.nombre} te respalde por completo.
         </p>
         <span className="inline-flex w-fit items-center rounded-lg bg-coral px-4 py-2 text-sm font-medium text-coral-foreground">
           Registrar beneficiarios
         </span>
         <p className="text-xs text-muted-foreground">
-          Recibes este correo porque activaste tu beneficio. Puedes ajustar tus notificaciones
+          Recibes este correo porque contrataste tu seguro. Puedes ajustar tus notificaciones
           desde tu perfil.
         </p>
       </div>

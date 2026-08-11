@@ -1,22 +1,19 @@
-// Datos mock realistas para el MVP "Vita+" (seguro de vida B2B)
+// Datos mock realistas para el MVP "Vita+" (seguro de vida B2C — venta directa)
 
 export const colaborador = {
   nombre: 'Marlon Pariona',
   primerNombre: 'Marlon',
   iniciales: 'MP',
-  puesto: 'Analista de Operaciones',
-  empresa: 'Grupo Andes',
   email: 'Marlon.pariona@gmail.com',
-  ingreso: '3 de marzo, 2025',
+  clienteDesde: '3 de marzo, 2025',
 }
 
-// Vita+ es el producto (no un tercero): la empresa es cliente, no dueña de la marca.
+// Vita+ se contrata directamente: no hay empresa intermediaria ni tercero asegurador.
 export const producto = {
   nombre: 'Vita+',
   poliza: 'VT-2025-48213',
   vigenciaHasta: '31 de diciembre, 2025',
-  costoColaborador: 'Sin costo para ti',
-  empresaCliente: colaborador.empresa,
+  precio: 'Desde $9.99/mes',
   montoFallecimiento: 50000,
   montoMuerteAccidental: 100000,
   montoInvalidez: 50000,
@@ -116,7 +113,7 @@ export const faqs = [
   {
     pregunta: '¿Cuánto está asegurado?',
     respuesta:
-      'Tu póliza incluye $50,000 por fallecimiento, $100,000 por muerte accidental y $50,000 por invalidez total y permanente, sin costo para ti.',
+      'Tu póliza incluye $50,000 por fallecimiento, $100,000 por muerte accidental y $50,000 por invalidez total y permanente, desde $9.99 al mes.',
   },
   {
     pregunta: '¿Quién puede ser mi beneficiario?',
@@ -129,14 +126,14 @@ export const faqs = [
       'Sí, cuando quieras. Entra a la sección de Beneficiarios y actualiza la lista en cualquier momento.',
   },
   {
-    pregunta: '¿Qué sucede si dejo la empresa?',
+    pregunta: '¿Puedo cancelar mi seguro cuando quiera?',
     respuesta:
-      'La cobertura está ligada a tu relación laboral. Si cambias de empleo, Recursos Humanos te explicará las opciones disponibles.',
+      'Sí. Vita+ no tiene permanencia forzosa: puedes cancelar tu póliza cuando quieras desde tu cuenta, sin penalidades.',
   },
   {
     pregunta: '¿Qué debe hacer mi familia para solicitar el beneficio?',
     respuesta:
-      'Deben contactar a Recursos Humanos o a la línea de atención de Vita+ y presentar la documentación básica que se detalla en la Guía para beneficiarios.',
+      'Deben contactar a la línea de atención de Vita+ y presentar la documentación básica que se detalla en la Guía para beneficiarios.',
   },
   {
     pregunta: '¿Cuándo no aplica la cobertura?',
@@ -159,9 +156,9 @@ export const contactos = [
     icono: 'Phone',
   },
   {
-    nombre: 'Recursos Humanos — Grupo Andes',
-    detalle: 'Dudas sobre tu beneficio',
-    valor: 'beneficios@grupoandes.com',
+    nombre: 'Facturación y pagos',
+    detalle: 'Dudas sobre tu plan o tu método de pago',
+    valor: 'pagos@vitaplus.com',
     tipo: 'email',
     icono: 'Mail',
   },

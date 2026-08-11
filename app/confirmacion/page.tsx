@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { colaborador, producto } from '@/lib/data'
 
+
 export default async function ConfirmacionPage({
   searchParams,
 }: {
@@ -54,8 +55,8 @@ export default async function ConfirmacionPage({
             ¡Listo, {nombre}! Tu protección está activa
           </h1>
           <p className="max-w-xl text-lg leading-relaxed text-muted-foreground text-pretty">
-            Tu {producto.nombre} quedó activado y con cobertura vigente hasta el{' '}
-            {producto.vigenciaHasta}. A partir de ahora, cuentas con el respaldo de tu empresa.
+            Tu {producto.nombre} quedó contratado y con cobertura vigente hasta el{' '}
+            {producto.vigenciaHasta}. A partir de ahora, cuentas con tu propia protección.
           </p>
         </div>
 
@@ -63,14 +64,12 @@ export default async function ConfirmacionPage({
           <CardContent className="flex flex-col gap-4 pt-6 sm:flex-row sm:items-center sm:justify-between">
             <div className="flex flex-col gap-1">
               <span className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
-                Póliza activada
+                Póliza contratada
               </span>
               <span className="font-display text-lg font-semibold text-foreground">
                 {producto.poliza}
               </span>
-              <span className="text-sm text-muted-foreground">
-                {colaborador.empresa} · {producto.costoColaborador}
-              </span>
+              <span className="text-sm text-muted-foreground">{producto.precio}</span>
             </div>
             <div className="flex flex-col gap-1 sm:text-right">
               <span className="text-xs font-medium uppercase tracking-wide text-muted-foreground">

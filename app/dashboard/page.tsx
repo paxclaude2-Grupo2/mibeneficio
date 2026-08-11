@@ -42,8 +42,8 @@ function descargarCertificado() {
   const contenido = `VITA+ — CERTIFICADO DE SEGURO (DEMO)
 ================================================
 
-Colaborador: ${colaborador.nombre}
-Empresa: ${colaborador.empresa}
+Titular: ${colaborador.nombre}
+Plan: ${producto.precio}
 Póliza: ${producto.poliza}
 Vigente hasta: ${producto.vigenciaHasta}
 
@@ -121,7 +121,7 @@ export default function DashboardPage() {
                 Hola, {perfil.nombre.split(' ')[0]}
               </h1>
               <p className="text-sm text-muted-foreground">
-                {colaborador.puesto} · {colaborador.empresa}
+                Cliente Vita+ desde el {colaborador.clienteDesde}
               </p>
             </div>
           </div>
@@ -181,10 +181,10 @@ export default function DashboardPage() {
                 </div>
                 <div className="flex flex-col gap-1">
                   <span className="text-xs uppercase tracking-wide text-muted-foreground">
-                    Empresa
+                    Plan
                   </span>
                   <span className="font-display text-base font-semibold text-foreground">
-                    {colaborador.empresa}
+                    {producto.precio}
                   </span>
                 </div>
               </div>

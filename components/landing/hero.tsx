@@ -2,7 +2,7 @@ import { ArrowRight, BadgeCheck, Clock } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
-import { producto, colaborador } from '@/lib/data'
+import { producto } from '@/lib/data'
 
 export function Hero() {
   return (
@@ -11,7 +11,7 @@ export function Hero() {
         <div className="flex flex-col items-start gap-6">
           <span className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-3 py-1 text-xs font-medium text-muted-foreground">
             <BadgeCheck className="size-3.5 text-coral" />
-            {producto.nombre} · Beneficio proporcionado por {colaborador.empresa}
+            {producto.nombre} · Seguro de vida 100% digital
           </span>
 
           <h1 className="font-display text-4xl font-bold leading-[1.05] tracking-tight text-foreground text-balance sm:text-5xl">
@@ -19,8 +19,9 @@ export function Hero() {
           </h1>
 
           <p className="max-w-xl text-lg leading-relaxed text-muted-foreground text-pretty">
-            Tu empresa te ofrece <strong className="font-semibold text-foreground">{producto.nombre}</strong>, un
-            seguro de vida diseñado para protegerte a ti y a las personas que más quieres.
+            Contrata <strong className="font-semibold text-foreground">{producto.nombre}</strong>, un seguro de
+            vida diseñado para protegerte a ti y a las personas que más quieres. Sin papeleo ni
+            intermediarios.
           </p>
 
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
@@ -40,13 +41,13 @@ export function Hero() {
               className="h-11 px-6 text-base"
               render={<Link href="/terminos" />}
             >
-              Activar mi seguro
+              Contratar mi seguro
             </Button>
           </div>
 
           <div className="flex items-center gap-2 text-sm text-muted-foreground">
             <Clock className="size-4" />
-            Toma menos de 2 minutos · {producto.costoColaborador}
+            Toma menos de 2 minutos · {producto.precio}
           </div>
         </div>
 
@@ -67,7 +68,7 @@ export function Hero() {
               {producto.vigenciaHasta}
             </p>
             <p className="mt-1 text-xs text-muted-foreground">
-              {producto.nombre} · {colaborador.empresa}
+              {producto.nombre} · {producto.precio}
             </p>
           </div>
         </div>

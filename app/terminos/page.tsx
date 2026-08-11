@@ -67,10 +67,10 @@ export default function TerminosPage() {
 
         <div className="mb-8 flex flex-col gap-3 text-center">
           <h1 className="font-display text-3xl font-bold tracking-tight text-foreground text-balance">
-            Un último paso antes de activar
+            Un último paso antes de contratar
           </h1>
           <p className="text-muted-foreground text-pretty">
-            Para habilitar tu {producto.nombre} necesitamos tu consentimiento. Léelo con calma,
+            Para contratar tu {producto.nombre} necesitamos tu consentimiento. Léelo con calma,
             está en lenguaje claro.
           </p>
         </div>
@@ -81,11 +81,11 @@ export default function TerminosPage() {
               <span className="mb-1 flex size-10 items-center justify-center rounded-xl bg-accent text-primary">
                 <UserCircle className="size-5" />
               </span>
-              <CardTitle>¿Quién está activando el beneficio?</CardTitle>
+              <CardTitle>¿Quién está contratando el seguro?</CardTitle>
             </CardHeader>
             <CardContent className="flex flex-col gap-4">
               <p className="text-sm leading-relaxed text-muted-foreground">
-                Usamos estos datos para identificarte como el beneficiario y enviarte la
+                Usamos estos datos para identificarte como el titular de la póliza y enviarte la
                 confirmación por correo.
               </p>
               <div className="flex flex-col gap-3 sm:flex-row">
@@ -111,7 +111,7 @@ export default function TerminosPage() {
                     id="email"
                     type="email"
                     autoComplete="email"
-                    placeholder="tú@empresa.com"
+                    placeholder="tú@correo.com"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     className="h-11"
@@ -126,13 +126,13 @@ export default function TerminosPage() {
               <span className="mb-1 flex size-10 items-center justify-center rounded-xl bg-accent text-primary">
                 <FileText className="size-5" />
               </span>
-              <CardTitle>Términos y condiciones del beneficio</CardTitle>
+              <CardTitle>Términos y condiciones del seguro</CardTitle>
             </CardHeader>
             <CardContent className="flex flex-col gap-3 text-sm leading-relaxed text-muted-foreground">
               <p>
-                {producto.nombre} es el seguro de vida que tu empresa te ofrece (póliza{' '}
-                {producto.poliza}) sin costo para ti. La cobertura estará vigente mientras
-                mantengas tu relación laboral y hasta el {producto.vigenciaHasta}.
+                {producto.nombre} es el seguro de vida que puedes contratar directamente (póliza{' '}
+                {producto.poliza}), {producto.precio.toLowerCase()}. La cobertura estará vigente
+                mientras tu plan esté activo y hasta el {producto.vigenciaHasta}.
               </p>
               <p>
                 Tu protección incluye fallecimiento, muerte accidental e invalidez total y
@@ -140,8 +140,8 @@ export default function TerminosPage() {
                 situaciones en las que aplica, disponibles en el Centro de recursos.
               </p>
               <p>
-                Activar el beneficio no genera ningún cargo ni compromiso económico. Puedes
-                consultar el documento completo en cualquier momento.
+                Puedes cancelar tu plan cuando quieras, sin penalidades. Consulta el documento
+                completo en cualquier momento.
               </p>
             </CardContent>
           </Card>
@@ -160,8 +160,8 @@ export default function TerminosPage() {
               </p>
               <p>
                 No compartimos tu información con terceros para fines comerciales. Puedes ejercer
-                tus derechos de acceso, rectificación y cancelación escribiendo a Recursos
-                Humanos.
+                tus derechos de acceso, rectificación y cancelación escribiendo a nuestro equipo
+                de soporte.
               </p>
             </CardContent>
           </Card>
@@ -176,7 +176,7 @@ export default function TerminosPage() {
               />
               <span className="text-sm leading-relaxed text-foreground">
                 He leído y acepto los <strong className="font-semibold">Términos y
-                condiciones</strong> del beneficio.
+                condiciones</strong> del seguro.
               </span>
             </label>
             <label htmlFor="privacidad" className="flex cursor-pointer items-start gap-3">
@@ -204,7 +204,7 @@ export default function TerminosPage() {
               disabled={!puedeContinuar || enviando}
               onClick={activar}
             >
-              {enviando ? 'Activando…' : 'Aceptar y activar'}
+              {enviando ? 'Contratando…' : 'Aceptar y contratar'}
               {!enviando && <ArrowRight data-icon="inline-end" className="size-4" />}
             </Button>
           </div>

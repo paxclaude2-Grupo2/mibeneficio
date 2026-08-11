@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
 import nodemailer from 'nodemailer'
-import { colaborador, producto } from '@/lib/data'
+import { producto } from '@/lib/data'
 import { buildActivationEmailHtml } from '@/lib/email-template'
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
@@ -44,14 +44,13 @@ export async function POST(request: Request) {
     await transporter.sendMail({
       from: `"${producto.nombre}" <${user}>`,
       to: email,
-      subject: `Tu ${producto.nombre} quedó activado`,
+      subject: `Tu ${producto.nombre} quedó contratado`,
       text: `¡Hola ${primerNombre}!
 
-Tu ${producto.nombre} quedó activado y con cobertura vigente hasta el ${producto.vigenciaHasta}.
+Tu ${producto.nombre} quedó contratado y con cobertura vigente hasta el ${producto.vigenciaHasta}.
 
 Póliza: ${producto.poliza}
-Empresa: ${colaborador.empresa}
-Costo para ti: ${producto.costoColaborador}
+Plan: ${producto.precio}
 
 Protege económicamente a quienes más quieres: no olvides registrar a tus beneficiarios.
 
@@ -59,9 +58,8 @@ Protege económicamente a quienes más quieres: no olvides registrar a tus benef
       html: buildActivationEmailHtml({
         nombre: primerNombre,
         poliza: producto.poliza,
-        empresa: colaborador.empresa,
+        precio: producto.precio,
         vigenciaHasta: producto.vigenciaHasta,
-        costo: producto.costoColaborador,
       }),
     })
 

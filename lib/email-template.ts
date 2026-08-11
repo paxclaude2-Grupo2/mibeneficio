@@ -5,11 +5,10 @@
 export function buildActivationEmailHtml(params: {
   nombre: string
   poliza: string
-  empresa: string
+  precio: string
   vigenciaHasta: string
-  costo: string
 }) {
-  const { nombre, poliza, empresa, vigenciaHasta, costo } = params
+  const { nombre, poliza, precio, vigenciaHasta } = params
 
   const colors = {
     background: '#f8fafd',
@@ -85,12 +84,8 @@ export function buildActivationEmailHtml(params: {
                           <td align="right" style="padding:6px 0; color:${colors.primary}; font-size:14px; font-weight:700;">${poliza}</td>
                         </tr>
                         <tr>
-                          <td style="padding:6px 0; color:${colors.muted}; font-size:13px; border-top:1px solid ${colors.border};">Empresa</td>
-                          <td align="right" style="padding:6px 0; color:${colors.foreground}; font-size:14px; border-top:1px solid ${colors.border};">${empresa}</td>
-                        </tr>
-                        <tr>
-                          <td style="padding:6px 0; color:${colors.muted}; font-size:13px; border-top:1px solid ${colors.border};">Costo para ti</td>
-                          <td align="right" style="padding:6px 0; color:${colors.foreground}; font-size:14px; border-top:1px solid ${colors.border};">${costo}</td>
+                          <td style="padding:6px 0; color:${colors.muted}; font-size:13px; border-top:1px solid ${colors.border};">Plan</td>
+                          <td align="right" style="padding:6px 0; color:${colors.foreground}; font-size:14px; border-top:1px solid ${colors.border};">${precio}</td>
                         </tr>
                         <tr>
                           <td style="padding:6px 0; color:${colors.muted}; font-size:13px; border-top:1px solid ${colors.border};">Vigente hasta</td>
@@ -116,7 +111,7 @@ export function buildActivationEmailHtml(params: {
             <!-- Footer -->
             <tr>
               <td style="padding:20px 32px; background-color:${colors.background}; border-top:1px solid ${colors.border}; text-align:center;">
-                <p style="margin:0; color:${colors.muted}; font-size:12px;">— Vita+ · Beneficio proporcionado por ${empresa}</p>
+                <p style="margin:0; color:${colors.muted}; font-size:12px;">— Vita+ · Tu seguro de vida 100% digital</p>
               </td>
             </tr>
 
