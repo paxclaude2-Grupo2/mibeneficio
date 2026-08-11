@@ -1,6 +1,6 @@
 'use client'
 
-import { LayoutDashboard, LifeBuoy, Menu, Users } from 'lucide-react'
+import { LayoutDashboard, LifeBuoy, Menu, Package, Users } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'
@@ -10,6 +10,7 @@ import { cn } from '@/lib/utils'
 
 const nav = [
   { href: '/dashboard', label: 'Mi dashboard', icon: LayoutDashboard },
+  { href: '/arma-tu-plan', label: 'Arma tu plan', icon: Package },
   { href: '/beneficiarios', label: 'Beneficiarios', icon: Users },
   { href: '/recursos', label: 'Centro de recursos', icon: LifeBuoy },
 ]

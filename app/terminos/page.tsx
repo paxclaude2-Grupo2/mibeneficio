@@ -1,9 +1,9 @@
 'use client'
 
-import { ArrowLeft, ArrowRight, FileText, Lock, UserCircle } from 'lucide-react'
+import { ArrowLeft, ArrowRight, FileText, Lock, Package, UserCircle } from 'lucide-react'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
-import { useState } from 'react'
+import { useRouter, useSearchParams } from 'next/navigation'
+import { Suspense, useState } from 'react'
 import { FlowSteps } from '@/components/flow-steps'
 import { Logo } from '@/components/logo'
 import { Button } from '@/components/ui/button'
@@ -13,6 +13,21 @@ import { Input } from '@/components/ui/input'
 import { producto } from '@/lib/data'
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+
+function ComboBadge() {
+  const searchParams = useSearchParams()
+  const combo = searchParams.get('combo')
+  if (!combo) return null
+  const [cantidad, total] = combo.split('-')
+  const n = Number(cantidad)
+  if (!n) return null
+  return (
+    <div className="mb-6 flex items-center justify-center gap-2 rounded-xl border border-coral/30 bg-coral/5 px-4 py-3 text-center text-sm text-foreground">
+      <Package className="size-4 shrink-0 text-coral" />
+      Tu combo: {n} beneficio{n > 1 ? 's' : ''} adicional{n > 1 ? 'es' : ''} · <strong>{total}/mes</strong>
+    </div>
+  )
+}
 
 export default function TerminosPage() {
   const router = useRouter()
@@ -64,6 +79,10 @@ export default function TerminosPage() {
         <div className="mb-10">
           <FlowSteps current={1} />
         </div>
+
+        <Suspense fallback={null}>
+          <ComboBadge />
+        </Suspense>
 
         <div className="mb-8 flex flex-col gap-3 text-center">
           <h1 className="font-display text-3xl font-bold tracking-tight text-foreground text-balance">

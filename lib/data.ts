@@ -14,10 +14,58 @@ export const producto = {
   poliza: 'VT-2025-48213',
   vigenciaHasta: '31 de diciembre, 2025',
   precio: 'Desde $9.99/mes',
+  precioBase: 9.99,
   montoFallecimiento: 50000,
   montoMuerteAccidental: 100000,
   montoInvalidez: 50000,
 }
+
+// "Arma tu Vita+": beneficios opcionales que el cliente suma a su plan base,
+// cada uno con su propio costo mensual, para armar su combo a la medida.
+export const beneficiosOpcionales = [
+  {
+    id: 'monto-extra',
+    nombre: 'Duplica tu monto asegurado',
+    descripcion: 'Sube tu cobertura por fallecimiento de $50,000 a $100,000.',
+    precio: 4.99,
+    icono: 'TrendingUp',
+  },
+  {
+    id: 'accidental-plus',
+    nombre: 'Muerte accidental Plus',
+    descripcion: 'Aumenta tu cobertura por accidente a $200,000.',
+    precio: 2.99,
+    icono: 'Zap',
+  },
+  {
+    id: 'funeraria',
+    nombre: 'Asistencia funeraria',
+    descripcion: 'Cubre los gastos funerarios para que tu familia no los asuma.',
+    precio: 1.49,
+    icono: 'HeartHandshake',
+  },
+  {
+    id: 'renta-invalidez',
+    nombre: 'Renta por invalidez temporal',
+    descripcion: 'Un ingreso mensual mientras te recuperas de una invalidez.',
+    precio: 3.99,
+    icono: 'Wallet',
+  },
+  {
+    id: 'educacion',
+    nombre: 'Protección educativa',
+    descripcion: 'Un fondo para la educación de tus hijos beneficiarios.',
+    precio: 2.49,
+    icono: 'GraduationCap',
+  },
+  {
+    id: 'deudas',
+    nombre: 'Protección de deudas',
+    descripcion: 'Cubre tus deudas pendientes para que no recaigan en tu familia.',
+    precio: 3.49,
+    icono: 'Landmark',
+  },
+] as const
 
 export const proteccionDetalle = [
   {
